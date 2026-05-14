@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07070a" />
+  <title>Евгений — Frontend Developer | Tech Noir Portfolio</title>
+  <meta name="description" content="Техно-нуар портфолио фронтенд‑разработчика: интерактив, анимации, WebGL, быстрые лендинги и продуктовые интерфейсы." />
+
+  <!-- Favicon / app icons -->
+  <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="is-preloading">
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__panel" role="presentation">
+      <div class="preloader__top">
+        <img class="preloader__mark" src="./img/logo-mark.svg" width="56" height="56" alt="" />
+        <div class="preloader__txt">
+          <div class="preloader__title">E.PONOMAREV</div>
+          <div class="preloader__sub">INITIALIZING UI…</div>
+        </div>
+      </div>
+      <div class="preloader__bar" aria-hidden="true"><b class="preloader__fill" id="preFill"></b></div>
+      <div class="preloader__meta" aria-hidden="true">
+        <span class="preloader__pct" id="prePct">0%</span>
+        <span class="preloader__code">const ui = init(<i>"tech-noir"</i>)</span>
+      </div>
+      <div class="preloader__row" aria-hidden="true">
+        <span class="preloader__hint">Loading</span>
+        <span class="preloader__pct" id="prePct2">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <a class="skip" href="#main">Перейти к контенту</a>
+
+  <!-- Background layers (noise + grid + particles) -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__noise"></div>
+    <canvas class="bg__stars" id="stars" aria-hidden="true"></canvas>
+    <div class="bg__scan"></div>
+  </div>
+
+  <!-- Top HUD -->
+  <header class="hud" id="top">
+    <div class="hud__left">
+      <a class="brand" href="#top" aria-label="На верх">
+        <img class="logoMark" src="./img/logo-mark.svg" width="28" height="28" alt="" aria-hidden="true" />
+        <span class="brand__text">E.PONOMAREV</span>
+      </a>
+      <span class="hud__pill" id="statusPill" aria-live="polite">
+        <span class="dot" aria-hidden="true"></span>
+        available for projects
+      </span>
+    </div>
+
+    <nav class="nav" aria-label="Навигация">
+      <a class="nav__a" href="#about">Обо мне</a>
+      <a class="nav__a" href="#stack">Стек</a>
+      <a class="nav__a" href="#work">Проекты</a>
+      <a class="nav__a" href="#contact">Контакты</a>
+      <button class="nav__btn" id="cmdBtn" type="button" aria-haspopup="dialog" aria-controls="cmd">
+        <span aria-hidden="true">⌘</span> Command
+      </button>
+    </nav>
+
+    <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile nav -->
+  <nav class="mnav" id="mobileNav" aria-label="Мобильная навигация">
+    <a class="mnav__a" href="#about">Обо мне</a>
+    <a class="mnav__a" href="#stack">Стек</a>
+    <a class="mnav__a" href="#work">Проекты</a>
+    <a class="mnav__a" href="#contact">Контакты</a>
+    <a class="mnav__a mnav__a--ghost" href="#top">Наверх</a>
+  </nav>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="wrap">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <div class="kicker">
+              <span class="kicker__tag">tech noir</span>
+              <span class="kicker__sep" aria-hidden="true"></span>
+              <span class="kicker__tag">frontend</span>
+              <span class="kicker__sep" aria-hidden="true"></span>
+              <span class="kicker__tag">webgl</span>
+            </div>
+
+            <h1 class="h1">
+              Делаю сайты, которые
+              <span class="h1__fx" data-glitch="выглядят">выглядят</span>
+              как из будущего.
+            </h1>
+
+            <p class="lead">
+              Быстрые лендинги, продуктовые интерфейсы и интерактивные эффекты.
+              Минимализм, техно‑нуар, строгий премиум.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn--primary magnetic" href="#work">
+                <span>Смотреть проекты</span>
+                <i class="i" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn--ghost" href="#contact">
+                <span>Обсудить задачу</span>
+              </a>
+            </div>
+
+            <div class="hero__meta">
+              <div class="metaCard">
+                <div class="metaCard__top">
+                  <span class="metaCard__label">Скорость</span>
+                  <span class="metaCard__value">90–100</span>
+                </div>
+                <div class="metaCard__bar" aria-hidden="true">
+                  <div class="metaCard__fill" style="--p:92%"></div>
+                </div>
+                <div class="metaCard__hint">Lighthouse (в типовом проекте)</div>
+              </div>
+              <div class="metaCard">
+                <div class="metaCard__top">
+                  <span class="metaCard__label">Фокус</span>
+                  <span class="metaCard__value">UI / Motion</span>
+                </div>
+                <div class="metaCard__chips" aria-hidden="true">
+                  <span>GSAP</span><span>Three.js</span><span>Next.js</span>
+                </div>
+                <div class="metaCard__hint">Анимации без «тяжести»</div>
+              </div>
+            </div>
+
+            <div class="codeEditor" id="codeEditor" aria-label="VS Code стиль: живой код">
+              <div class="codeEditor__top" aria-hidden="true">
+                <span class="codeEditor__tab">app.js</span>
+                <span class="codeEditor__pill">LIVE</span>
+              </div>
+              <div class="codeEditor__body">
+                <div class="codeEditor__ln" id="codeLn" aria-hidden="true"></div>
+                <div class="codeEditor__code" id="codeTyper" aria-hidden="true"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="hero__panel">
+            <div class="orb" aria-hidden="true"></div>
+            <div class="hudCard" aria-label="Интерактивная панель">
+              <div class="hudCard__top">
+                <span class="hudCard__title">Live Interface</span>
+                <span class="hudCard__chip">v2.0</span>
+              </div>
+
+              <div class="meter" aria-hidden="true">
+                <div class="meter__row">
+                  <span>signal</span>
+                  <div class="meter__line"><b style="--w:78%"></b></div>
+                </div>
+                <div class="meter__row">
+                  <span>latency</span>
+                  <div class="meter__line"><b style="--w:34%"></b></div>
+                </div>
+                <div class="meter__row">
+                  <span>render</span>
+                  <div class="meter__line"><b style="--w:91%"></b></div>
+                </div>
+              </div>
+
+              <div class="spark" aria-hidden="true" id="spark">
+                <canvas class="spark__cv" id="sparkCv" width="560" height="160" aria-hidden="true"></canvas>
+                <div class="spark__hud" aria-hidden="true">
+                  <span>frame</span><b id="sparkFps">60</b>
+                  <span>pulse</span><b class="ok">OK</b>
+                </div>
+              </div>
+
+              <div class="hudCard__bottom">
+                <button class="chip" type="button" data-filter="All">All</button>
+                <button class="chip" type="button" data-filter="Landing">Landing</button>
+                <button class="chip" type="button" data-filter="App">App</button>
+                <button class="chip" type="button" data-filter="WebGL">WebGL</button>
+              </div>
+            </div>
+
+            <div class="codeEditor" id="codeEditor" aria-label="Псевдо редактор: печать кода">
+              <div class="codeEditor__top" aria-hidden="true">
+                <span class="codeEditor__tab">app.js</span>
+                <span class="codeEditor__dot" aria-hidden="true"></span>
+                <span class="codeEditor__dot codeEditor__dot--2" aria-hidden="true"></span>
+                <span class="codeEditor__dot codeEditor__dot--3" aria-hidden="true"></span>
+              </div>
+              <div class="codeEditor__body">
+                <div class="codeEditor__lines" id="codeLines"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="wrap">
+        <div class="secHead">
+          <h2 class="h2">Обо мне</h2>
+          <p class="sub">Коротко, по делу. Без «воды». С упором на результат и эстетику.</p>
+        </div>
+
+        <div class="about">
+          <article class="card card--wide" data-reveal>
+            <div class="card__cap">
+              <span class="cap">Profile</span>
+              <span class="cap cap--right">3+ years</span>
+            </div>
+            <p class="p">
+              Я — фронтенд‑разработчик. Собираю интерфейсы, которые ощущаются как продукт: чистая типографика,
+              аккуратные состояния, микровзаимодействия, скорость и доступность.
+            </p>
+            <ul class="list">
+              <li>React / Next.js, TypeScript, CSS architecture</li>
+              <li>Three.js / WebGL (когда нужно «вау», но без просадок FPS)</li>
+              <li>Анимации: Web Animations / GSAP‑подход без зависимости</li>
+            </ul>
+
+            <div class="stats" aria-label="Ключевые цифры">
+              <div class="stat">
+                <span class="stat__n">50+</span>
+                <span class="stat__t">проектов</span>
+              </div>
+              <div class="stat">
+                <span class="stat__n">24h</span>
+                <span class="stat__t">MVP лендинга</span>
+              </div>
+              <div class="stat">
+                <span class="stat__n">95%</span>
+                <span class="stat__t">возврат клиентов</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card card--aside" data-reveal>
+            <div class="card__cap">
+              <span class="cap">Now</span>
+              <span class="cap cap--right">focus</span>
+            </div>
+
+            <div class="now">
+              <div class="now__row">
+                <span class="now__k">Формат</span>
+                <span class="now__v">Лендинги • Продукты • Портфолио</span>
+              </div>
+              <div class="now__row">
+                <span class="now__k">Стиль</span>
+                <span class="now__v">Dark • Purple • Neon Green</span>
+              </div>
+              <div class="now__row">
+                <span class="now__k">Сборка</span>
+                <span class="now__v">Vanilla / React / Next</span>
+              </div>
+            </div>
+
+            <a class="miniLink" href="#contact">
+              <span>Давай сделаем проект</span>
+              <span class="miniLink__arr" aria-hidden="true">→</span>
+            </a>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <button class="btn btn--ghost btn--full" id="downloadBtn" type="button">
+              <span>Скачать CV</span>
+            </button>
+            <p class="hint">*кнопка оставлена как пример. Заменишь ссылку на свой файл.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="sec" id="stack">
+      <div class="wrap">
+        <div class="secHead">
+          <h2 class="h2">Стек и навыки</h2>
+          <p class="sub">Наведи / кликни — раскрываю детали, без перегруза.</p>
+        </div>
+
+        <div class="stack">
+          <div class="stackCol" data-reveal>
+            <h3 class="h3">Frontend</h3>
+            <div class="chips" role="list">
+              <button class="chip chip--info" type="button" data-note="Семантика, SEO, доступность">HTML</button>
+              <button class="chip chip--info" type="button" data-note="Design tokens, адаптив, эффекты">CSS</button>
+              <button class="chip chip--info" type="button" data-note="Интерактив, оптимизация, архитектура">JavaScript</button>
+              <button class="chip chip--info" type="button" data-note="Компоненты, хуки, состояние">React</button>
+              <button class="chip chip--info" type="button" data-note="SSG/SSR, маршрутизация, перфоманс">Next.js</button>
+              <button class="chip chip--info" type="button" data-note="Типы, надёжность, DX">TypeScript</button>
+            </div>
+          </div>
+
+          <div class="stackCol" data-reveal>
+            <h3 class="h3">Motion & 3D</h3>
+            <div class="chips" role="list">
+              <button class="chip chip--info" type="button" data-note="Микроанимации без библиотек">WAAPI</button>
+              <button class="chip chip--info" type="button" data-note="Скролл-анимации и сцены">GSAP</button>
+              <button class="chip chip--info" type="button" data-note="3D‑сцены и интерактив">Three.js</button>
+              <button class="chip chip--info" type="button" data-note="Стабильные 60fps при правильной дозировке">WebGL</button>
+            </div>
+          </div>
+
+          <div class="stackCol" data-reveal>
+            <h3 class="h3">Tooling</h3>
+            <div class="chips" role="list">
+              <button class="chip chip--info" type="button" data-note="Ветвление, PR, код-ревью">Git</button>
+              <button class="chip chip--info" type="button" data-note="Компонентный дизайн и прототипы">Figma</button>
+              <button class="chip chip--info" type="button" data-note="API, формы, интеграции">REST</button>
+              <button class="chip chip--info" type="button" data-note="Сборки, оптимизация">Vite</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="note" id="note" role="status" aria-live="polite">
+          <span class="note__label">info</span>
+          <span class="note__text">Наведи на чип, чтобы увидеть описание.</span>
+        </div>
+      </div>
+
+      <div class="ticker ticker--alt" aria-hidden="true">
+        <div class="ticker__track ticker__track--rev">
+          <span>UI</span><span>•</span><span>DX</span><span>•</span><span>SSR</span><span>•</span><span>Motion</span><span>•</span><span>Perf</span><span>•</span>
+          <span>UI</span><span>•</span><span>DX</span><span>•</span><span>SSR</span><span>•</span><span>Motion</span><span>•</span><span>Perf</span><span>•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="sec" id="work">
+      <div class="wrap">
+        <div class="secHead secHead--row">
+          <div>
+            <h2 class="h2">Проекты</h2>
+            <p class="sub">Карточки — это «порталы». Открывай модалку и смотри детали.</p>
+          </div>
+          <div class="filters" aria-label="Фильтры проектов">
+            <button class="fbtn is-active" type="button" data-filter="All">All</button>
+            <button class="fbtn" type="button" data-filter="Landing">Landing</button>
+            <button class="fbtn" type="button" data-filter="App">App</button>
+            <button class="fbtn" type="button" data-filter="WebGL">WebGL</button>
+          </div>
+        </div>
+
+        <div class="work" id="workGrid" aria-label="Сетка проектов"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <div class="wrap">
+        <div class="secHead">
+          <h2 class="h2">Контакты</h2>
+          <p class="sub">Пишешь — я отвечаю. Можно сразу с ТЗ/референсами.</p>
+        </div>
+
+        <div class="contact">
+          <form class="form" id="contactForm" novalidate>
+            <div class="form__row">
+              <label class="field">
+                <span class="field__label">Имя</span>
+                <input class="field__in" name="name" autocomplete="name" required placeholder="Как к тебе обращаться" />
+              </label>
+              <label class="field">
+                <span class="field__label">Email</span>
+                <input class="field__in" name="email" type="email" autocomplete="email" required placeholder="name@mail.com" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Сообщение</span>
+              <textarea class="field__in field__in--ta" name="message" rows="5" required placeholder="Что нужно сделать? Сроки? Ссылки?" ></textarea>
+            </label>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">
+                <span>Отправить</span>
+                <i class="i" aria-hidden="true"></i>
+              </button>
+              <p class="hint">
+                Важно: токены/ключи не храним в фронте. Отправка тут сделана безопасно через mailto (демо).
+              </p>
+            </div>
+          </form>
+
+          <div class="reach" data-reveal>
+            <div class="reach__card">
+              <div class="reach__top">
+                <span class="cap">Direct</span>
+                <span class="cap cap--right">links</span>
+              </div>
+              <a class="reach__a" href="mailto:ponomareve45@gmail.com">ponomareve45@gmail.com</a>
+              <a class="reach__a" href="https://github.com/EvgenyPonomarevNova" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="reach__a" href="https://msngr.link/tg/@Jonnnms" target="_blank" rel="noreferrer">Telegram</a>
+              <a class="reach__a" href="#" aria-disabled="true" class="is-disabled">LinkedIn (обновлю)</a>
+            </div>
+
+            <div class="reach__card">
+              <div class="reach__top">
+                <span class="cap">Workflow</span>
+                <span class="cap cap--right">how</span>
+              </div>
+              <ol class="steps">
+                <li><b>Бриф</b> → цели, аудитория, референсы</li>
+                <li><b>Прототип</b> → структура + контент</li>
+                <li><b>UI/Motion</b> → дизайн + эффекты</li>
+                <li><b>Сборка</b> → верстка, оптимизация, деплой</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <div class="footLeft">
+        <img class="logoMark logoMark--foot" src="./img/logo-mark.svg" width="20" height="20" alt="" aria-hidden="true" />
+        <span class="brand__text">E.PONOMAREV</span>
+        <span class="footSep" aria-hidden="true"></span>
+        <span class="footCopy">© <span id="year"></span></span>
+      </div>
+      <a class="toTop" href="#top">↑</a>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <dialog class="modal" id="projectModal" aria-label="Детали проекта">
+    <div class="modal__bg" data-close></div>
+    <div class="modal__panel" role="document">
+      <div class="modal__top">
+        <div>
+          <div class="modal__k" id="mK">Project</div>
+          <h3 class="modal__t" id="mT">—</h3>
+        </div>
+        <button class="x" type="button" data-close aria-label="Закрыть">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="modal__media" id="mMedia" aria-label="Превью"></div>
+        <div class="modal__text">
+          <div class="mBlock">
+            <div class="mBlock__h">Описание</div>
+            <p class="p" id="mD">—</p>
+          </div>
+
+          <div class="mBlock">
+            <div class="mBlock__h">Технологии</div>
+            <div class="modal__tags" id="mTech" aria-label="Технологии"></div>
+          </div>
+
+          <div class="mBlock">
+            <div class="mBlock__h">Фишки / что сделано</div>
+            <ul class="mList" id="mHi"></ul>
+          </div>
+
+          <div class="mBlock" id="mMeta">
+            <div class="mBlock__h">Коротко</div>
+            <div class="mMeta"></div>
+          </div>
+
+          <div class="modal__links" id="mLinks" aria-label="Ссылки"></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Command palette -->
+  <dialog class="cmd" id="cmd" aria-label="Command">
+    <div class="cmd__bg" data-close></div>
+    <div class="cmd__panel" role="document">
+      <div class="cmd__top">
+        <span class="cap">Command</span>
+        <span class="cap cap--right">press Esc</span>
+      </div>
+      <input class="cmd__in" id="cmdInput" placeholder="Например: projects, contact, top…" autocomplete="off" />
+      <div class="cmd__list" id="cmdList" role="listbox" aria-label="Команды"></div>
+      <p class="hint">Enter — выполнить • ↑/↓ — выбрать</p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-label="Logo mark">
+  <path d="M64 8 L108 34 L108 94 L64 120 L20 94 L20 34 Z" stroke="#8B5CF6" stroke-width="4"/>
+  <path d="M64 18 L98 38 L98 90 L64 110 L30 90 L30 38 Z" fill="rgba(139,92,255,0.10)" stroke="rgba(139,92,255,0.55)" stroke-width="2"/>
+  <path d="M44 78 L60 60 L70 70 L90 48" stroke="#33FF8A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 48 V62" stroke="#33FF8A" stroke-width="6" stroke-linecap="round"/>
+  <path d="M90 48 H76" stroke="#33FF8A" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="44" cy="78" r="4" fill="#33FF8A"/>
+  <circle cx="60" cy="60" r="4" fill="#33FF8A"/>
+  <circle cx="70" cy="70" r="4" fill="#33FF8A"/>
+  <circle cx="90" cy="48" r="4" fill="#33FF8A"/>
+</svg>
